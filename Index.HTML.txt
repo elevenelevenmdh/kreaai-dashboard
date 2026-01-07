@@ -3,10 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krea AI Dashboard</title>
+  <title>Krea AI Usage Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 2rem;
+      background: #f7f8fa;
+      color: #111;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    canvas {
+      max-width: 600px;
+      background: #fff;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to the Krea AI Dashboard</h1>
-  <p>This is your first live GitHub Page!</p>
+  <h1>Krea AI Token Usage</h1>
+  <canvas id="kreaChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById('kreaChart').getContext('2d');
+    const kreaChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Nov', 'Dec', 'Jan'],
+        datasets: [{
+          label: 'Tokens Used',
+          data: [80000, 140000, 215000],
+          backgroundColor: '#6c63ff'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'top' },
+          title: {
+            display: true,
+            text: 'Krea AI Token Usage by Month'
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
